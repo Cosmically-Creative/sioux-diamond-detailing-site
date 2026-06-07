@@ -57,6 +57,12 @@
       url(/img/main/window-tinting-hero-lower.jpeg);
   }
 
+  .vinyl-wrap-page {
+    background-image:
+      linear-gradient(var(--color-navy-overlay)),
+      url(/img/main/vinyl-wrap-lower.jpeg);
+  }
+
   .nav-contact {
     gap: 3rem;
   }
@@ -207,6 +213,12 @@
     background-image:
       linear-gradient(var(--color-navy-overlay)),
       url(/img/main/window-tinting-hero-mobile.jpeg);
+  }
+
+  .vinyl-wrap-page {
+    background-image:
+      linear-gradient(var(--color-navy-overlay)),
+      url(/img/main/vinyl-wrap-mobile.jpeg);
   }
 
   .btn-mobile-nav {
