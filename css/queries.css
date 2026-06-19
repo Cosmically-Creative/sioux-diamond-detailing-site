@@ -82,10 +82,6 @@
     row-gap: 5rem;
   }
 
-  .contact-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
   .narrow {
     width: 90%;
   }
@@ -159,11 +155,6 @@
 
   .section {
     padding: 7rem 5%;
-  }
-
-  .contact-grid {
-    grid-template-columns: 1fr;
-    gap: 10rem;
   }
 
   .top-padding {
@@ -324,8 +315,7 @@
   }
 
   .contact-grid {
-    padding: 2rem;
-    gap: 3rem;
+    padding: 0;
   }
 
   .footer {

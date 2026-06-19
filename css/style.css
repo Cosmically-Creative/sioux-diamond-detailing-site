@@ -157,14 +157,6 @@ address {
   align-items: center;
 }
 
-.contact-option div a {
-  padding: 0;
-}
-
-.contact-option .social-icons {
-  gap: 3rem;
-}
-
 .footer-column .icon-wrapper a:link {
   padding: 1rem 0;
 }
@@ -626,38 +618,14 @@ a:active {
 }
 
 .contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 0.75fr;
-  gap: 5rem;
   padding: 5rem;
-  border-radius: 1rem;
-  width: 100%;
-  align-self: center;
   margin-top: 5rem;
-  box-shadow: 0px 5px 5px 5px var(--shadow-dark);
+  border-radius: 5rem;
 }
 
-.contact-option-heading {
-  color: var(--color-cyan);
-  font-size: 2.2rem;
-}
-
-.contact-options-box {
+.ep-wrapper {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.contact-options {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
+  justify-content: center;
   align-items: center;
 }
 
