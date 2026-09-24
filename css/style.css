@@ -128,9 +128,9 @@ address {
   background-color: var(--color-cyan);
   position: fixed;
   bottom: 0;
-  right: 0;
+  left: 0;
   padding: 1rem;
-  border-radius: 3rem 0 0 0;
+  border-radius: 0 3rem 0 0;
 }
 
 .nav-bottom {
@@ -615,6 +615,13 @@ a:active {
 /* CONTACT SECTION */
 .contact-section {
   border-bottom: 2px solid var(--color-light-gray);
+}
+
+/* Temporarily hide Contact Us sections and any standalone forms while chat is active. */
+.contact-section,
+form,
+iframe[data-form-id] {
+  display: none !important;
 }
 
 .contact-grid {
