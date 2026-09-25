@@ -5,6 +5,23 @@
    600px  - Mobile
 ===================== */
 
+/* === 1680px — two team columns are too tight below this === */
+@media (max-width: 105em) {
+  .grid-2-col {
+    grid-template-columns: 1fr;
+    row-gap: 8rem;
+  }
+
+  .team-member {
+    gap: 8rem;
+  }
+
+  .profile-img {
+    width: 24rem;
+    height: 24rem;
+  }
+}
+
 /* === 1520px === */
 @media (max-width: 95em) {
   .grid-3-col {
@@ -69,7 +86,6 @@
 
   .grid-2-col {
     grid-template-columns: 1fr;
-    gap: 4rem;
   }
 
   .grid-3-col {
@@ -137,6 +153,8 @@
 
   .team-member {
     flex-direction: column;
+    align-items: flex-start;
+    gap: 3.5rem;
   }
 
   .slider-container {
@@ -312,6 +330,7 @@
 
   .profile-img {
     width: 20rem;
+    height: 20rem;
   }
 
   .contact-grid {

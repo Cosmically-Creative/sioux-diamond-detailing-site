@@ -559,19 +559,23 @@ a:active {
 .grid-2-col {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 7rem;
-  padding: 3rem;
+  column-gap: 12rem;
+  row-gap: 10rem;
+  padding: 6rem 0 2rem;
 }
 
 .team-member {
   display: flex;
   align-items: center;
-  gap: 4rem;
+  gap: 6rem;
 }
 
 .profile-img {
   border-radius: 50%;
-  width: 30rem;
+  width: 18rem;
+  height: 18rem;
+  object-fit: cover;
+  flex: 0 0 auto;
   border: 2px solid var(--color-light-gray);
   box-shadow: 0px 5px 5px 5px var(--shadow-dark);
 }
@@ -579,7 +583,7 @@ a:active {
 .profile-bio {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2.8rem;
 }
 
 .animated-car {
