@@ -351,11 +351,6 @@
     display: none;
   }
 
-  .nav-icons {
-    gap: 0;
-    padding: 0.5rem;
-  }
-
   .animated-car {
     bottom: -7rem;
     right: 0;
