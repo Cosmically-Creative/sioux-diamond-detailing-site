@@ -1,6 +1,7 @@
 # OS files
 .DS_Store
 Thumbs.db
+.directory
 
 # Editor files
 *.swp
