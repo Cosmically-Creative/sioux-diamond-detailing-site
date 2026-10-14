@@ -611,6 +611,7 @@ a:active {
 /* CONTACT SECTION */
 .contact-section {
   border-bottom: 2px solid var(--color-light-gray);
+  scroll-margin-top: 13rem;
 }
 
 .contact-grid {
@@ -913,4 +914,11 @@ strong {
 
 .gallery-img:hover {
   transform: scale(1.05);
+}
+
+.gallery-progress {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 25rem);
+  gap: 3rem;
+  justify-content: start;
 }
