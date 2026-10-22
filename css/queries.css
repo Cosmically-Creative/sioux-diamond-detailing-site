@@ -44,7 +44,8 @@
     font-size: 56.25%; /* 9px */
   }
 
-  .hero-section {
+  .hero-section,
+  .giveaway-section {
     background-image:
       linear-gradient(var(--color-navy-overlay)),
       url(/img/main/hero-img-lower.jpeg);
@@ -178,6 +179,14 @@
   .top-padding {
     padding-top: 20%;
   }
+
+  .giveaway-countdown-value {
+    font-size: 6rem;
+  }
+
+  .giveaway-countdown-units {
+    gap: 3rem;
+  }
 }
 
 /* === 600px === */
@@ -194,7 +203,8 @@
     font-size: 2.4rem;
   }
 
-  .hero-section {
+  .hero-section,
+  .giveaway-section {
     background-image:
       linear-gradient(var(--color-navy-overlay)),
       url(/img/main/hero-img-mobile.jpeg);
@@ -395,5 +405,27 @@
 
   .top-padding {
     padding-top: 30%;
+  }
+
+  .giveaway-banner:link,
+  .giveaway-banner:visited {
+    font-size: 1.4rem;
+    padding: 0.8rem 4%;
+  }
+
+  .giveaway-countdown-value {
+    font-size: 4.4rem;
+  }
+
+  .giveaway-countdown-units {
+    gap: 1.2rem;
+  }
+
+  .giveaway-countdown-unit {
+    min-width: 6.4rem;
+  }
+
+  .giveaway-countdown-label {
+    letter-spacing: 0.08em;
   }
 }

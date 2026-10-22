@@ -121,6 +121,52 @@ address {
   width: 100%;
 }
 
+.giveaway-banner:link,
+.giveaway-banner:visited {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem 1.2rem;
+  width: 100%;
+  padding: 0.7rem 5%;
+  background-color: var(--color-cyan);
+  color: var(--color-navy);
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.giveaway-banner:hover,
+.giveaway-banner:active {
+  color: var(--color-navy);
+  background-color: var(--color-cyan);
+  transform: none;
+}
+
+.giveaway-banner:hover .giveaway-banner-label,
+.giveaway-banner:active .giveaway-banner-label {
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+}
+
+.giveaway-timer-units {
+  display: flex;
+  gap: 1.2rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.giveaway-timer.is-closed .giveaway-timer-units,
+.giveaway-countdown.is-closed .giveaway-countdown-units {
+  display: none;
+}
+
+.giveaway-timer.is-closed .giveaway-timer-closed,
+.giveaway-countdown.is-closed .giveaway-timer-closed {
+  display: block;
+}
+
 .nav-icons {
   display: none;
 }
@@ -620,6 +666,88 @@ a:active {
   border-radius: 5rem;
 }
 
+.giveaway-section {
+  min-height: 100vh;
+  justify-content: center;
+  background-image:
+    linear-gradient(var(--color-navy-overlay)), url(/img/main/hero-img.jpeg);
+  background-size: cover;
+  background-position: center;
+}
+
+.giveaway-form-section {
+  border-top: 2px solid var(--color-light-gray);
+  background-color: var(--color-navy);
+  scroll-margin-top: 13rem;
+}
+
+.giveaway-form-section .contact-grid {
+  margin-top: 0;
+}
+
+.giveaway-section .section-header {
+  text-align: center;
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.giveaway-section .icon-wrapper {
+  justify-content: center;
+}
+
+.giveaway-countdown {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.giveaway-countdown-units {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4rem;
+}
+
+.giveaway-countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 10rem;
+}
+
+.giveaway-countdown-value {
+  font-size: 8rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--color-cyan);
+  font-variant-numeric: tabular-nums;
+}
+
+.giveaway-countdown-label {
+  font-size: 1.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.giveaway-countdown .giveaway-timer-closed {
+  font-size: 3rem;
+  color: var(--color-cyan);
+  text-align: center;
+}
+
+.form-placeholder {
+  min-height: 28rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+  border: 2px dashed var(--color-cyan);
+  border-radius: 2rem;
+  padding: 4rem;
+}
+
 .ep-wrapper {
   display: flex;
   justify-content: center;
@@ -921,4 +1049,130 @@ strong {
   grid-template-columns: repeat(auto-fill, 25rem);
   gap: 3rem;
   justify-content: start;
+}
+
+/* GIVEAWAY SHINE ANIMATION */
+.giveaway-animation {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 56rem;
+  margin: 2rem auto 0;
+}
+
+.giveaway-animation svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.gw-ground {
+  stroke: var(--color-cyan-faded);
+  stroke-width: 2;
+}
+
+.gw-shadow {
+  fill: var(--shadow-dark);
+}
+
+.gw-car {
+  animation: gw-car-in 1.2s ease-out both;
+}
+
+.gw-car-body,
+.gw-body-fill {
+  fill: var(--color-cyan);
+}
+
+.gw-dark {
+  fill: var(--color-navy);
+}
+
+.gw-rim {
+  fill: var(--color-light-gray);
+}
+
+/* Wheels roll while the car glides in, then stop */
+.gw-wheel {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: gw-wheel-roll 1.2s ease-out both;
+}
+
+.gw-shine {
+  transform: translateX(-120px);
+  animation: gw-shine 4s ease-in-out 1.2s infinite;
+}
+
+.gw-sparkle {
+  fill: var(--color-near-white);
+  transform: scale(0);
+  opacity: 0;
+  animation: gw-twinkle 2.4s ease-in-out infinite;
+}
+
+.gw-s1 { animation-delay: 1.4s; }
+.gw-s2 { animation-delay: 2s; }
+.gw-s3 { animation-delay: 2.6s; }
+.gw-s4 { animation-delay: 3.2s; }
+
+@keyframes gw-car-in {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes gw-wheel-roll {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes gw-shine {
+  0% {
+    transform: translateX(-120px);
+  }
+  45%,
+  100% {
+    transform: translateX(440px);
+  }
+}
+
+@keyframes gw-twinkle {
+  0%,
+  100% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1) rotate(45deg);
+    opacity: 1;
+  }
+}
+
+/* Visitors who turn off motion in their device settings get a still version */
+@media (prefers-reduced-motion: reduce) {
+  .gw-car,
+  .gw-wheel,
+  .gw-shine,
+  .gw-sparkle {
+    animation: none;
+  }
+
+  .gw-shine {
+    opacity: 0;
+  }
+
+  .gw-sparkle {
+    transform: scale(1);
+    opacity: 1;
+  }
 }

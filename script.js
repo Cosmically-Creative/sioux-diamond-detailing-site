@@ -177,3 +177,50 @@ galleries.forEach((gallery) => {
     }px)`;
   });
 });
+
+// Giveaway closes at the end of November 1, 2026 (Central Time).
+const GIVEAWAY_CLOSE = new Date("2026-11-02T06:00:00Z");
+
+function updateGiveawayTimers() {
+  const timers = document.querySelectorAll("[data-giveaway-timer]");
+  if (!timers.length) return;
+
+  const remaining = GIVEAWAY_CLOSE.getTime() - Date.now();
+  const totalSeconds = Math.max(0, Math.floor(remaining / 1000));
+  const days = Math.floor(totalSeconds / 86400);
+  const hours = Math.floor((totalSeconds % 86400) / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+  const closed = remaining <= 0;
+
+  timers.forEach((timer) => {
+    const units = timer.querySelector(
+      ".giveaway-timer-units, .giveaway-countdown-units",
+    );
+    const closedMessage = timer.querySelector(".giveaway-timer-closed");
+
+    if (closed) {
+      timer.classList.add("is-closed");
+      if (units) units.hidden = true;
+      if (closedMessage) closedMessage.hidden = false;
+      timer.setAttribute("aria-label", "Giveaway closed");
+      return;
+    }
+
+    const daysEl = timer.querySelector("[data-days]");
+    const hoursEl = timer.querySelector("[data-hours]");
+    const minutesEl = timer.querySelector("[data-minutes]");
+    const secondsEl = timer.querySelector("[data-seconds]");
+    if (daysEl) daysEl.textContent = String(days);
+    if (hoursEl) hoursEl.textContent = String(hours).padStart(2, "0");
+    if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, "0");
+    if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, "0");
+    timer.setAttribute(
+      "aria-label",
+      `${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds remaining`,
+    );
+  });
+}
+
+updateGiveawayTimers();
+setInterval(updateGiveawayTimers, 1000);
