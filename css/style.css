@@ -151,6 +151,13 @@ address {
   text-underline-offset: 0.25rem;
 }
 
+html.giveaway-closed .giveaway-banner:link,
+html.giveaway-closed .giveaway-banner:visited,
+html.giveaway-closed .giveaway-section,
+html.giveaway-closed .giveaway-form-section {
+  display: none;
+}
+
 .giveaway-timer-units {
   display: flex;
   gap: 1.2rem;

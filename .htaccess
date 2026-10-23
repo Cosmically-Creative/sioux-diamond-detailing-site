@@ -5,6 +5,13 @@ DirectorySlash Off
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
+  # Giveaway stays up through the end of November 1, 2026 (Central),
+  # which is 2026-11-02 06:00:00 UTC. After that, /giveaway sends visitors home.
+  # This redirect is temporary so the page can be reused: update this timestamp
+  # together with GIVEAWAY_CLOSE in giveaway-gate.js.
+  RewriteCond %{TIME} >=20261102060000
+  RewriteRule ^giveaway(?:/index\.html)?/?$ / [R=302,L]
+
   # Old /html/... addresses
   RewriteRule ^html/services/([^/]+)/?(?:index\.html)?$ /services/$1 [R=301,L]
   RewriteRule ^html/(about|giveaway)/?(?:index\.html)?$ /$1 [R=301,L]

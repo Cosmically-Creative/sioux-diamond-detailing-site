@@ -178,35 +178,37 @@ galleries.forEach((gallery) => {
   });
 });
 
-// Giveaway closes at the end of November 1, 2026 (Central Time).
-const GIVEAWAY_CLOSE = new Date("2026-11-02T06:00:00Z");
+// Same instant as giveaway-gate.js and the .htaccess redirect:
+// the end of November 1, 2026 (Central Time).
+const GIVEAWAY_CLOSE = new Date(
+  window.GIVEAWAY_CLOSE || "2026-11-02T06:00:00Z",
+);
+
+function isGiveawayPage() {
+  return /\/giveaway(?:\/index\.html)?\/?$/.test(location.pathname);
+}
 
 function updateGiveawayTimers() {
   const timers = document.querySelectorAll("[data-giveaway-timer]");
+  const remaining = GIVEAWAY_CLOSE.getTime() - Date.now();
+  const closed = remaining <= 0;
+
+  if (closed) {
+    clearInterval(giveawayTimerId);
+    document.documentElement.classList.add("giveaway-closed");
+    if (isGiveawayPage()) location.replace("/");
+    return;
+  }
+
   if (!timers.length) return;
 
-  const remaining = GIVEAWAY_CLOSE.getTime() - Date.now();
-  const totalSeconds = Math.max(0, Math.floor(remaining / 1000));
+  const totalSeconds = Math.floor(remaining / 1000);
   const days = Math.floor(totalSeconds / 86400);
   const hours = Math.floor((totalSeconds % 86400) / 3600);
   const minutes = Math.floor((totalSeconds % 3600) / 60);
   const seconds = totalSeconds % 60;
-  const closed = remaining <= 0;
 
   timers.forEach((timer) => {
-    const units = timer.querySelector(
-      ".giveaway-timer-units, .giveaway-countdown-units",
-    );
-    const closedMessage = timer.querySelector(".giveaway-timer-closed");
-
-    if (closed) {
-      timer.classList.add("is-closed");
-      if (units) units.hidden = true;
-      if (closedMessage) closedMessage.hidden = false;
-      timer.setAttribute("aria-label", "Giveaway closed");
-      return;
-    }
-
     const daysEl = timer.querySelector("[data-days]");
     const hoursEl = timer.querySelector("[data-hours]");
     const minutesEl = timer.querySelector("[data-minutes]");
@@ -222,5 +224,8 @@ function updateGiveawayTimers() {
   });
 }
 
-updateGiveawayTimers();
-setInterval(updateGiveawayTimers, 1000);
+let giveawayTimerId;
+if (document.querySelector("[data-giveaway-timer]") || isGiveawayPage()) {
+  giveawayTimerId = setInterval(updateGiveawayTimers, 1000);
+  updateGiveawayTimers();
+}
